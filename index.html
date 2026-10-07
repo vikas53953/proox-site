@@ -3,111 +3,110 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Proox</title>
-<meta name="description" content="Proox is a private trading copilot on WhatsApp. It watches the market and keeps a journal for its owner. It never places an order.">
 <meta name="robots" content="index,follow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230e3b43'/%3E%3Cpath d='M11 23V9h6.2a4.4 4.4 0 0 1 0 8.8H11' fill='none' stroke='%23e9f3ee' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#08090a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f2f3f4'/%3E%3Cstop offset='1' stop-color='%236b7280'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3C/svg%3E">
+<title>Proox</title>
+<meta name="description" content="Proox is a private trading copilot. It watches the Indian index options market, keeps a journal for its owner, and never places an order.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap">
 <style>
-/* Layout: one calm column. A statement, then what it does beside what it never does, then who runs it. */
+/* Layout: Midnight. One dark centred hero with a soft glow behind a single Telegram note, then quiet left-aligned sections on hairlines. Single dark theme by choice. */
 :root{
-  --bg:#f2f5f1; --panel:#ffffff; --ink:#132a2e; --muted:#566a6c; --line:#d3ddd6;
-  --deep:#0e3b43; --accent:#0d7a6b; --no:#9a3b2e; --no-bg:#f8ebe7; --yes-bg:#e4f2ec;
-  --serif:"Fraunces",Georgia,"Times New Roman",serif;
-  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --bg:#08090a; --ink:#f2f3f4; --muted:#8a8f98; --dim:#5d626a; --line:#1f2226; --card:#111316; --glow:rgba(84,214,170,.15); --accent:#54d6aa;
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Geist Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme:dark){:root{
-  --bg:#0c1719; --panel:#122326; --ink:#e3eeea; --muted:#93a9a7; --line:#24393c;
-  --deep:#bfe6dc; --accent:#55c7b3; --no:#f0a091; --no-bg:#33201c; --yes-bg:#12332d;
-  color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 var(--sans);padding-inline:20px;padding-block:0 64px}
-.wrap{max-width:44rem;margin-inline:auto}
-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px;border-bottom:1px solid var(--line)}
-.mark{font:600 1.25rem/1 var(--serif);color:var(--deep);letter-spacing:.01em}
-.tag{font:500 .74rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.hero{padding-block:56px 40px}
-h1{font:600 clamp(2rem,6vw,3.1rem)/1.1 var(--serif);margin:0;color:var(--deep);text-wrap:balance;letter-spacing:-.01em}
-.lede{margin:20px 0 0;font-size:1.12rem;color:var(--muted);max-width:36rem}
-.pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:18px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px 22px 18px;min-width:0}
-.card h2{font:600 1.02rem/1.3 var(--sans);margin:0 0 12px}
-.card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
-.card li{padding-left:1.5rem;position:relative}
-.card li::before{position:absolute;left:0;top:.05em;font:600 .95rem/1.6 var(--mono)}
-.does li::before{content:"+";color:var(--accent)}
-.never{background:var(--no-bg);border-color:transparent}
-.never h2{color:var(--no)}
-.never li::before{content:"\00d7";color:var(--no)}
-section.block{padding-block:40px 0}
-section.block h2{font:600 1.35rem/1.25 var(--serif);margin:0 0 12px;color:var(--deep);text-wrap:balance}
-section.block p{margin:0 0 12px;max-width:38rem}
-dl{margin:14px 0 0;display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;font-size:.98rem}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 var(--sans);padding-inline:20px;padding-block:0 64px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:64rem;margin-inline:auto;position:relative}
+.glow{position:absolute;left:50%;top:430px;width:min(56rem,100%);height:520px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,var(--glow),transparent);pointer-events:none}
+nav{display:flex;justify-content:space-between;align-items:center;padding-block:22px;position:relative}
+.logo{display:flex;gap:9px;align-items:center;font-weight:600;font-size:1rem;letter-spacing:-.01em}
+.logo i{width:15px;height:15px;border-radius:4px;background:linear-gradient(135deg,var(--ink),#6b7280)}
+.pill{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.8rem;color:#c9ccd1;display:inline-flex;gap:8px;align-items:center}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.hero{text-align:center;padding-block:clamp(56px,11vw,120px) 0;position:relative}
+.eyebrow{font:400 .74rem/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+h1{font-weight:500;font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.02;letter-spacing:-.04em;margin:20px auto 0;max-width:14ch;text-wrap:balance;background:linear-gradient(180deg,#fff 35%,#979da6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);max-width:31rem;margin:20px auto 0;font-size:1.05rem}
+.tg{margin:52px auto 0;max-width:24rem;background:var(--card);border:1px solid #23262b;border-radius:18px;padding:18px 20px;text-align:left;font-size:.92rem;line-height:1.6;box-shadow:0 40px 90px -24px rgba(0,0,0,.9)}
+.tg .who{display:flex;justify-content:space-between;font:400 .72rem/1 var(--mono);color:var(--dim);margin-bottom:12px}
+.tg hr{border:0;border-top:1px solid #23262b;margin:12px 0 10px}
+.tg em{color:var(--muted);font-size:.82rem}
+main{max-width:44rem;margin-inline:auto;display:flex;flex-direction:column;gap:88px;padding-top:112px;position:relative}
+.label{font:400 .74rem/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:20px}
+h2{font-weight:500;font-size:clamp(1.6rem,4vw,2.1rem);line-height:1.12;letter-spacing:-.03em;margin:0;text-wrap:balance}
+section p{margin:0;color:var(--muted);max-width:36rem}
+.lists{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:28px}
+.lists h3{margin:0 0 10px;font-size:.9rem;font-weight:500}
+.lists ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.lists li{padding-block:12px;border-bottom:1px solid var(--line);display:flex;gap:12px;color:#c9ccd1;font-size:.95rem}
+.lists li::before{font:400 .85rem/1.75 var(--mono);flex:none;width:1ch}
+.yes li::before{content:"+";color:var(--accent)}
+.no li::before{content:"\00d7";color:var(--dim)}
+dl{margin:0;border-top:1px solid var(--line)}
+dl div{display:grid;grid-template-columns:8rem 1fr;gap:16px;padding-block:12px;border-bottom:1px solid var(--line);font-size:.95rem}
 dt{color:var(--muted)}
-dd{margin:0}
-.notice{margin-top:40px;padding:16px 18px;border-radius:10px;background:var(--yes-bg);font-size:.95rem}
-footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem;display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between}
-a{color:var(--accent)}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+dd{margin:0;min-width:0;color:#c9ccd1}
+.fine{font-size:.84rem;color:var(--dim);max-width:36rem;margin:0}
+footer{max-width:44rem;margin:56px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:400 .74rem/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--dim);position:relative}
+@media (max-width:420px){dl div{grid-template-columns:1fr;gap:2px}}
+@media (prefers-reduced-motion:no-preference){.tg{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}@keyframes rise{from{transform:translateY(14px)}to{transform:none}}}
+.wrap{min-height:100vh;display:flex;flex-direction:column}
+.hero{flex:1}
+.chips{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:40px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.85rem;color:#c9ccd1;display:inline-flex;gap:8px;align-items:center}
+.chip b{font:400 .8rem/1 var(--mono);color:var(--accent);font-weight:400}
+.chip.no b{color:var(--dim)}
+footer{max-width:none;width:100%;margin-top:96px;align-items:center}
+details{position:relative}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:hover,summary:focus-visible{color:var(--ink);outline:none}
+.legal{position:absolute;bottom:calc(100% + 14px);left:0;width:min(26rem,calc(100vw - 40px));background:var(--card);border:1px solid #23262b;border-radius:14px;padding:16px 18px;font:400 .82rem/1.6 var(--sans);letter-spacing:0;text-transform:none;color:var(--muted);display:flex;flex-direction:column;gap:8px}
+.legal p{margin:0}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <span class="mark">Proox</span>
-    <span class="tag">Private copilot</span>
+  <div class="glow" aria-hidden="true"></div>
+  <nav>
+    <span class="logo"><i></i>Proox</span>
+    <span class="pill">Private copilot</span>
+  </nav>
+
+  <header class="hero">
+    <h1>Your quiet trading copilot.</h1>
+    <p class="sub">Watches the market. Never trades.</p>
+    <div class="tg" aria-label="Example of a Proox morning note">
+      <div class="who"><span>@prooxappbot</span><span>08:45 IST</span></div>
+      ☀️ <b>Morning note</b><br>
+      📈 Nifty 50 pre-open, watchlist ready<br>
+      🔔 2 reminders for today
+      <hr><em>⚠️ Example message. Not an order.</em>
+    </div>
+    <div class="chips">
+      <span class="chip"><b>+</b>Alerts</span>
+      <span class="chip"><b>+</b>Journal</span>
+      <span class="chip"><b>+</b>One owner</span>
+      <span class="chip no"><b>&times;</b>No orders</span>
+    </div>
   </header>
 
-  <div class="hero">
-    <h1>A second seat at the trading desk, on WhatsApp.</h1>
-    <p class="lede">Proox watches the Indian index options market and talks to its owner over WhatsApp. It keeps notes, reminders and a trading journal. It advises one person and it never touches an order.</p>
-  </div>
-
-  <div class="pair">
-    <div class="card does">
-      <h2>What Proox does</h2>
-      <ul>
-        <li>Reads market prices from a read-only data feed.</li>
-        <li>Sends its owner short notes, alerts and reminders on WhatsApp.</li>
-        <li>Keeps a tamper-evident journal of what was said and when.</li>
-        <li>Goes silent the moment its owner sends the word KILL.</li>
-      </ul>
-    </div>
-    <div class="card never">
-      <h2>What Proox never does</h2>
-      <ul>
-        <li>It never places, changes or cancels an order.</li>
-        <li>It has no connection to any broker account.</li>
-        <li>It does not message anyone except its owner.</li>
-        <li>It does not offer investment advice to the public.</li>
-      </ul>
-    </div>
-  </div>
-
-  <section class="block">
-    <h2>Privacy</h2>
-    <p>Proox is a single-owner tool. It only answers WhatsApp messages from its owner's own number and ignores every other sender.</p>
-    <p>Messages are processed to produce a reply and are stored in the owner's private database. They are not sold, not shared with third parties and not used for advertising. Messages travel through the WhatsApp Business Platform, which is operated by Meta.</p>
-  </section>
-
-  <section class="block">
-    <h2>Who runs it</h2>
-    <dl>
-      <dt>Operated by</dt><dd>Vikas Mittal</dd>
-      <dt>Location</dt><dd>Gurugram, Haryana, India</dd>
-      <dt>Service</dt><dd>Proox, a personal software project</dd>
-      <dt>Website</dt><dd>proox.app</dd>
-    </dl>
-  </section>
-
-  <p class="notice">Proox is not a registered investment adviser and is not a public service. Nothing on this page is investment advice. Trading in derivatives carries a risk of loss.</p>
-
   <footer>
-    <span>&copy; 2026 Vikas Mittal</span>
-    <span>proox.app</span>
+    <details>
+      <summary>Privacy &amp; disclaimer</summary>
+      <div class="legal">
+        <p>Proox serves one owner and ignores every other sender. Messages are stored privately, never sold or shared, and travel through Telegram or the WhatsApp Business Platform (Meta).</p>
+        <p>Run by Vikas Mittal as a personal software project. Not a registered investment adviser and not investment advice. Derivatives trading carries a risk of loss.</p>
+      </div>
+    </details>
+    <span>&copy; 2026 Proox</span>
   </footer>
 </div>
 </body>
